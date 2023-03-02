@@ -17,8 +17,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         
           
         if($count == 1) {
-           $_SESSION['username'] = $myusername;
-           header("location: user_interface.php");
+            echo "Trwa przekierowywanie...";
+            session_regenerate_id();
+            $_SESSION['username'] = $myusername;
+            sleep(2); 
+            header("location: user_interface.php");
+            exit();
         }else {
            echo "Twój login lub hasło jest nie poprawne.";
         }
