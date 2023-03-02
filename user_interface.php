@@ -1,10 +1,10 @@
 <?php
+include ("connect_music.php");
 session_start();
 if(!isset($_SESSION['username'])){
     header("location: error.php");
     exit();
 }
-echo "Witaj ".$_SESSION['username']."!";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,29 +13,49 @@ echo "Witaj ".$_SESSION['username']."!";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Interface</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500&family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/ui_style.css">
 </head>
 <body>
+    <div id="panel">
+        <div class="username"> <?php echo $_SESSION['username']; ?> </div><br /><br /><br />
+        <form method="post" action="logout.php">
+            <input class="logout" type="submit" value="Log out">
+        </form>
+    </div>
+<div id="right_user_panel">
+    <h1>Niedawno dodany utwór:</h1>
+    <?php
+    $zapytanie3 = "SELECT * FROM music_2 ORDER BY id DESC LIMIT 1;";
+    $wynik3 = mysqli_query($polaczenie,$zapytanie3);
+    while($utwor = mysqli_fetch_array($wynik3)) {
+        echo "<div id='niedawny_utwor'>";
+        echo $utwor['author_title'];
+        echo "</div>";
+    }
+    ?>
+</div>
 <?php
         echo "webpage in work. Please wait :)";
-        $polaczenie = mysqli_connect('localhost','root','','muzyka');
-        $a = "SELECT id,url,author_title FROM music_2";
-        $b = mysqli_query($polaczenie,$a);
         //
     ?>
 
-<form method="post" action="logout.php">
-  <input type="submit" value="Wyloguj">
-</form>
+
     <h1>nasza dostępna lista utworów.</h1>
     
+
     <?php
     while($wiersz = mysqli_fetch_array($b)) {
-    echo "<a href='";
-    echo $wiersz['url'];
-    echo "'>";
-    echo $wiersz['author_title'];
-    echo "</a>";
-    echo "<br>";
+    echo "<div id='music_id'>";
+        echo "<a href='";
+        echo $wiersz['url'];
+        echo "'>";
+        echo $wiersz['author_title'];
+        echo "</a>";
+        echo "<br>";
+    echo "</div>";
     }
 ?>
 
