@@ -78,7 +78,9 @@ while($row = mysqli_fetch_array($wynik2)) {
     echo "</div>";
     echo "<br>";
 
+
     ?>
+    
     <a href="delete_process.php?id=<?php echo $row['id']; ?>">Usuń: <?php $row['author_title']; ?>  </a>
 </div>
 <?php

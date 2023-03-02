@@ -9,10 +9,21 @@
 <body>
     <?php
         echo "webpage in work. Please wait :)";
-        $polaczenie = mysqli_connect('localhost','root','','music_2');
+        $polaczenie = mysqli_connect('localhost','root','','muzyka');
+        $a = "SELECT id,url,author_title FROM music_2";
+        $b = mysqli_query($polaczenie,$a);
         //
-        // 
-        // ...
+    ?>
+    <h1>nasza dostępna lista utworów.</h1>
+    <?php
+    while($wiersz = mysqli_fetch_array($b)) {
+    echo "<a href='";
+    echo $wiersz['url'];
+    echo "'>";
+    echo $wiersz['author_title'];
+    echo "</a>";
+    echo "<br>";
+    }
     ?>
     
 </body>
