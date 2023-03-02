@@ -26,12 +26,14 @@ if(!isset($_SESSION['username'])){
         </form>
     </div>
 <div id="right_user_panel">
-    <h1>Niedawno dodany utwór:</h1>
+    <h1>Niedawno dodane utwory:</h1>
     <?php
-    $zapytanie3 = "SELECT * FROM music_2 ORDER BY id DESC LIMIT 1;";
+    $zapytanie3 = "SELECT * FROM music_2 ORDER BY id DESC LIMIT 3;";
     $wynik3 = mysqli_query($polaczenie,$zapytanie3);
+
     while($utwor = mysqli_fetch_array($wynik3)) {
         echo "<div id='niedawny_utwor'>";
+        echo "<i class='arrow right'></i>";
         echo $utwor['author_title'];
         echo "</div>";
     }
