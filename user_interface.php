@@ -38,6 +38,19 @@ if(!isset($_SESSION['username'])){
         echo "</div>";
     }
     ?>
+    <br>
+    <h1>Polecani artyści:</h1>
+    <div id="artists">
+        <div id="artist-box"><div class="text-a-b">ARIQU</div></div>
+        <div id="artist-box"><div class="text-a-b">CARAMEL BASS</div></div>
+        <div id="artist-box"><div class="text-a-b">P1NX</div></div>
+        <div id="artist-box"><div class="text-a-b">EXMO</div></div>
+        <div id="artist-box"><div class="text-a-b">HU BISS</div></div>
+        <div id="artist-box"><div class="text-a-b">REZZ</div></div>
+        <div id="artist-box"><div class="text-a-b">LYCOS</div></div>
+        <div id="artist-box"><div class="text-a-b">DAVID TANGO</div></div>
+        <div id="artist-box"><div class="text-a-b">LESTON</div></div>
+    </div>
 </div>
 <?php
         echo "webpage in work. Please wait :)";
