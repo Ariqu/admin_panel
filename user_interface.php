@@ -12,17 +12,22 @@ echo "Witaj ".$_SESSION['username']."!";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User Interface</title>
 </head>
 <body>
-    <?php
+<?php
         echo "webpage in work. Please wait :)";
         $polaczenie = mysqli_connect('localhost','root','','muzyka');
         $a = "SELECT id,url,author_title FROM music_2";
         $b = mysqli_query($polaczenie,$a);
         //
     ?>
+
+<form method="post" action="logout.php">
+  <input type="submit" value="Wyloguj">
+</form>
     <h1>nasza dostępna lista utworów.</h1>
+    
     <?php
     while($wiersz = mysqli_fetch_array($b)) {
     echo "<a href='";
@@ -32,7 +37,8 @@ echo "Witaj ".$_SESSION['username']."!";
     echo "</a>";
     echo "<br>";
     }
-    ?>
+?>
+
     
 </body>
 </html>
