@@ -51,13 +51,11 @@ body {
     color: black;
 }
 #music_id {
-    background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 0, 0.5),
-    rgba(0, 0, 255, 0.5)
-  ), url("images/cb.jpg");
-    width: 240px;
-    height: 240px;
+    border-radius: 10px;
+    background: rgb(10,38,179);
+    background: radial-gradient(circle, rgb(72, 247, 151) 0%, rgb(94, 197, 9) 100%);
+    width: 230px;
+    height: 230px;
     float: left;
     margin: 10px;
     cursor: pointer;
@@ -65,9 +63,21 @@ body {
     animation-duration: 500ms;
     text-align: center;
 }
+#music_id:nth-child(2n) {
+    background: rgb(10,38,179);
+    background: radial-gradient(circle, rgba(10,38,179,1) 0%, rgba(137,17,255,1) 100%);
+}
+#music_id:nth-child(3n) {
+    background: rgb(10,38,179);
+    background: radial-gradient(circle, rgb(72, 101, 247) 0%, rgb(17, 255, 223) 100%);
+}
+#music_id:nth-child(4n) {
+    background: rgb(10,38,179);
+    background: radial-gradient(circle, rgb(247, 72, 189) 0%, rgb(120, 17, 255) 100%);
+}
+
 #music_id:hover {
-    width: 245px;
-    height: 245px;
+    opacity: 0.5;
 }
 a {
     color: black;
@@ -77,6 +87,7 @@ a {
     width: 100%;
     margin-top: 50px;
     transition: 500ms;
+    border-radius: 30px;
 }
 a:hover {
     background-color: cadetblue;

@@ -28,8 +28,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         }
      }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -48,8 +46,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     <input type="password" name="password">
     <input type="submit" name="submit_login" value="zaloguj">
 </form>
-
-
-    
+ 
 </body>
 </html>
