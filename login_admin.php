@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         
           
         if($count == 1) {
-           
+           $_SESSION['username'] = $myusername;
            header("location: user_interface.php");
         }else {
            echo "Twój login lub hasło jest nie poprawne.";
