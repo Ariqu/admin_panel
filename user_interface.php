@@ -1,7 +1,23 @@
 <?php
-include ("connect_music.php");
 session_start();
-if(!isset($_SESSION['username'])){
+$_SESSION['login'];
+$polaczenie = mysqli_connect('localhost','root','','music_database');
+$a = "SELECT id_music, url_music, title_music FROM music";
+$b = mysqli_query($polaczenie,$a);
+ //
+// //
+//  //
+//   //
+//    //
+//     // 
+//      //
+//       //
+//        //
+//      //
+//    //
+//  //
+//
+if(!isset($_SESSION['login'])){
     header("location: error.php");
     exit();
 }
@@ -20,21 +36,56 @@ if(!isset($_SESSION['username'])){
 </head>
 <body>
     <div id="panel">
-        <div class="username"> <?php echo $_SESSION['username']; ?> </div><br /><br /><br />
+        <div id="title_webpage">title....</div>
+        <div class="username"> <?php echo $_SESSION['login']; ?> </div><br /><br /><br />
         <form method="post" action="logout.php">
             <input class="logout" type="submit" value="Log out">
         </form>
+        <?php
+        //$text = "test";
+       // $md = md5($text);
+        //echo $md;
+        ?>
     </div>
 <div id="right_user_panel">
+    <?php
+    include ('main_connect.php');
+    if ($main_connect->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    }
+    $login = $_SESSION['login'];
+    $sql = "SELECT type FROM users WHERE login = '$login'";
+    $result = $main_connect->query($sql);
+
+    if (!$result) {
+        die("Error: " . $sql . "<br>" . $db->error);
+    }
+
+    $row = $result->fetch_assoc();
+    $id = $row['type'];
+    echo "<div id='type'>";
+    echo $id;
+    echo "</div>";
+    if ($id == "(ADMIN) Producer") {
+        echo "<div id='admin-panel'>";
+        echo "Jesteś w trybie administratora";
+        echo "<br>";
+        echo "<a href='admin_interface.php'>";
+        echo "Przejż do panelu";
+        echo "</a>";
+        echo "</div>";
+    }
+
+    ?>
     <h1>Niedawno dodane utwory:</h1>
     <?php
-    $zapytanie3 = "SELECT * FROM music_2 ORDER BY id DESC LIMIT 3;";
+    $zapytanie3 = "SELECT * FROM music ORDER BY id_music DESC LIMIT 3;";
     $wynik3 = mysqli_query($polaczenie,$zapytanie3);
 
     while($utwor = mysqli_fetch_array($wynik3)) {
         echo "<div id='niedawny_utwor'>";
         echo "<i class='arrow right'></i>";
-        echo $utwor['author_title'];
+        echo $utwor['title_music'];
         echo "</div>";
     }
     ?>
@@ -65,9 +116,9 @@ if(!isset($_SESSION['username'])){
     while($wiersz = mysqli_fetch_array($b)) {
     echo "<div id='music_id'>";
         echo "<a href='";
-        echo $wiersz['url'];
+        echo $wiersz['url_music'];
         echo "'>";
-        echo $wiersz['author_title'];
+        echo $wiersz['title_music'];
         echo "</a>";
         echo "<br>";
     echo "</div>";

@@ -1,3 +1,18 @@
+<?php
+// na początku skryptu
+session_start();
+
+// pobranie loginu z sesji
+$login = $_SESSION['login'];
+
+// sprawdzenie, czy użytkownik jest zalogowany i ma dostęp do tej strony
+if ($login != "ariqu") {
+    // użytkownik nie ma dostępu do tej strony, przekierowanie na user_interface.php
+    header("Location: user_interface.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +23,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div id="panel_admin">
+    <form method="post" action="logout.php">
+            <input class="logout" type="submit" value="Log out">
+    </form>
+    <br><br>
+    <a href="./user_interface.php">
+        <button class="comeback">Powrót</button>
+    </a>
+
+    
+    </div>
     <div id="container">
     <h1 class="title">administrator panel</h1>
     <p class="title">system testowy</p>
@@ -29,7 +56,7 @@
 
 </div>
     <?php
-    $polaczenie = mysqli_connect('localhost','root','','muzyka');
+    $polaczenie = mysqli_connect('localhost','root','','music_database');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //zmienne
     $link = $_POST['link'];
@@ -39,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //polaczenie z baza
 
     
-    $zapytanie = "INSERT INTO music_2 (url,author_title) VALUES('$link','$author_title')";
+    $zapytanie = "INSERT INTO music (url_music,title_music) VALUES('$link','$author_title')";
 
     $wynik = mysqli_query($polaczenie,$zapytanie);
 
@@ -52,9 +79,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "<script>console.log('nie dodano rekordu.')</script>";
     
 }
-$polaczenie = mysqli_connect('localhost','root','','muzyka');
+$polaczenie = mysqli_connect('localhost','root','','music_database');
 
-$zapytanie2 = "SELECT id,url,author_title FROM music_2";
+$zapytanie2 = "SELECT id_music,url_music,title_music FROM music";
 $wynik2 = mysqli_query($polaczenie,$zapytanie2);
 
 
@@ -70,22 +97,30 @@ while($row = mysqli_fetch_array($wynik2)) {
     //echo $row['id'];
     echo "<br>";
     echo "<div id='info'>";
-    echo $row['url'];
+    echo $row['url_music'];
     echo "</div>";
     echo "<br>";
     echo "<div id='info'>";
-    echo $row['author_title'];
+    echo $row['title_music'];
     echo "</div>";
     echo "<br>";
 
 
     ?>
     
-    <a href="delete_process.php?id=<?php echo $row['id']; ?>">Usuń: <?php $row['author_title']; ?>  </a>
+    <a href="delete_process.php?id=<?php echo $row['id_music']; ?>">Usuń: <?php $row['title_music']; ?>  </a>
 </div>
 <?php
 }
 ?>
-
+<style>
+    input.logout {
+        color: red;
+        background-color: black;
+        width: 100px;
+        float: right;
+        clear: both;
+    }
+</style>
 </body>
 </html>

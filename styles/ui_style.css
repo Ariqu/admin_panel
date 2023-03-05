@@ -35,6 +35,7 @@ body {
     margin-right: 10px;
     border-bottom: 1px solid white;
     transition: 500ms;
+    
 }
 .username::first-letter {
     color: black;
@@ -156,4 +157,24 @@ a:hover {
 }
 .text-a-b {
     margin-top: 29px;
+}
+#type {
+    color: rgb(255, 197, 197);
+    background-color: rgb(255, 82, 82);
+    font-weight: 900;
+    text-align: center;
+}
+#title_webpage {
+    color:rgb(247, 72, 189);
+    font-size: 80px;
+    float: left;
+    width: 12%;
+}
+#title_webpage::first-letter {
+    background-color: rgb(247, 72, 189);
+    color: black;
+}
+#title_webpage:first-of-type {
+    background-color: rgb(21, 0, 139);
+    color: black;
 }

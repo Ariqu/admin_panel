@@ -1,15 +1,22 @@
 <?php
-include ("connect.php");
 session_start();
+if (isset($_SESSION['logout_message'])) {
+    echo $_SESSION['logout_message'];
+    unset($_SESSION['logout_message']);
+}
+$polaczenie_login = mysqli_connect('localhost','root','','music_database');
+
 if($_SERVER["REQUEST_METHOD"]=="POST") {
     //
         // username and password sent from form 
         
-        $myusername = mysqli_real_escape_string($db,$_POST['username']);
-        $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+        $myusername = mysqli_real_escape_string($polaczenie_login,$_POST['username']);
+        $mypassword = mysqli_real_escape_string($polaczenie_login,$_POST['password']); 
         
-        $sql = "SELECT id FROM login_users WHERE username = '$myusername' and password = '$mypassword'";
-        $result = mysqli_query($db,$sql);
+        $sql = "SELECT id_user FROM users WHERE login = '$myusername' and password = md5('$mypassword')";
+
+        $result = mysqli_query($polaczenie_login,$sql);
+
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
         
@@ -19,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         if($count == 1) {
             echo "Trwa przekierowywanie...";
             session_regenerate_id();
-            $_SESSION['username'] = $myusername;
+            $_SESSION['login'] = $myusername;
             sleep(2); 
             header("location: user_interface.php");
             exit();
