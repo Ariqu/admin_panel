@@ -47,16 +47,26 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>prototyp systemu logowania</title>
+    <link rel="stylesheet" href="styles/log_reg.css">
 </head>
 <body>
-
+    <div id="content">
+    <div id="image">
+        <img src="images/img_1.png" alt="">
+    </div>
+<div id="user-form">
+    <div id="content-user-form">
 <form method="POST" action="login_admin.php">
     <input type="text" name="username">
     <input type="password" name="password">
     <input type="submit" name="submit_login" value="zaloguj">
 </form>
- 
+<a href="register.php"><button>Nie masz konta? Zarejetruj się</button></a>
+    </div>
+    </div>
+    </div>
+
+
 </body>
 </html>

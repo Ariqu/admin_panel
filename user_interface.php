@@ -35,6 +35,8 @@ if(!isset($_SESSION['login'])){
     <link rel="stylesheet" href="styles/ui_style.css">
 </head>
 <body>
+    <div id="container">
+
     <div id="panel">
         <div id="title_webpage">title....</div>
         <div class="username"> <?php echo $_SESSION['login']; ?> </div><br /><br /><br />
@@ -141,6 +143,10 @@ if(!isset($_SESSION['login'])){
     echo "</div>";
     }
 ?>
+</div>
+<div id="footer">© 2023 created by ariqu <br>
+    PHP SQL JS HTML CSS
+</div>
 
     
 </body>
