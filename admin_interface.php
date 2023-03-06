@@ -6,7 +6,7 @@ session_start();
 $login = $_SESSION['login'];
 
 // sprawdzenie, czy użytkownik jest zalogowany i ma dostęp do tej strony
-if ($login != "ariqu") {
+if ($login != "ariqu" && $login != "caramel bass" ) {
     // użytkownik nie ma dostępu do tej strony, przekierowanie na user_interface.php
     header("Location: user_interface.php");
     exit();

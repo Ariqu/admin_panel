@@ -42,9 +42,9 @@ if(!isset($_SESSION['login'])){
             <input class="logout" type="submit" value="Log out">
         </form>
         <?php
-        //$text = "test";
+       // $text = "test";
        // $md = md5($text);
-        //echo $md;
+        // echo $md;
         ?>
     </div>
 <div id="right_user_panel">
@@ -75,6 +75,22 @@ if(!isset($_SESSION['login'])){
         echo "</a>";
         echo "</div>";
     }
+    
+    $db = new PDO('mysql:host=localhost;dbname=music_database', 'root', '', array(
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ));
+    
+    $stmt = $db->query('SELECT * FROM messages ORDER BY id DESC LIMIT 1');
+    $message = $stmt->fetch()['message'];
+    if ($id == "(ADMIN) Producer") {
+     echo "<a href='edit_message.php'>Edytuj wiadomość</a>";
+    }
+    echo "<div id='message'>";
+    echo "<div id='msg-title'>Wiadomości</div>";
+    echo "<div id='msg-source'>$message</div>";
+    echo "</div>"
+
 
     ?>
     <h1>Niedawno dodane utwory:</h1>
@@ -121,6 +137,7 @@ if(!isset($_SESSION['login'])){
         echo $wiersz['title_music'];
         echo "</a>";
         echo "<br>";
+        echo $wiersz['url_music'];
     echo "</div>";
     }
 ?>

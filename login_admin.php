@@ -30,7 +30,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             sleep(2); 
             header("location: user_interface.php");
             exit();
-        }else {
+        } if ($mypassword == null || $myusername == null) {
+            echo "nie wpisałeś loginu lub hasła.";
+        }
+        
+        else {
            echo "Twój login lub hasło jest nie poprawne.";
         }
      }
