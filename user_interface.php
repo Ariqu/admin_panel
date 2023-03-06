@@ -121,6 +121,7 @@ if(!isset($_SESSION['login'])){
         echo $user['type'];
         echo "</div>";
         echo "</div>";
+        
     }
     ?>
     <br>
