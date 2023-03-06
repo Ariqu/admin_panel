@@ -107,6 +107,22 @@ if(!isset($_SESSION['login'])){
         echo "</div>";
     }
     ?>
+        <h1>Osoby które niedawno do nas dołączyły:</h1>
+    <?php
+    $zapytanie4 = "SELECT * FROM users ORDER BY id_user DESC LIMIT 3;";
+    $wynik4 = mysqli_query($polaczenie,$zapytanie4);
+
+    while($user = mysqli_fetch_array($wynik4)) {
+        echo "<div id='niedawny_utwor'>";
+        echo "<i class='arrow right'></i>";
+        echo $user['login'];
+        echo "<br>";
+        echo "<div class='red'>";
+        echo $user['type'];
+        echo "</div>";
+        echo "</div>";
+    }
+    ?>
     <br>
     <h1>Polecani artyści:</h1>
     <div id="artists">
