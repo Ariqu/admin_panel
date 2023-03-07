@@ -72,10 +72,9 @@ if(!isset($_SESSION['login'])){
         echo "<div id='admin-panel'>";
         echo "Jesteś w trybie administratora";
         echo "<br>";
-        echo "<a href='admin_interface.php'>";
+        echo "<a class='admin-btn' href='admin_interface.php'>";
         echo "Przejż do panelu";
         echo "</a>";
-        echo "</div>";
     }
     
     $db = new PDO('mysql:host=localhost;dbname=music_database', 'root', '', array(
@@ -86,13 +85,14 @@ if(!isset($_SESSION['login'])){
     $stmt = $db->query('SELECT * FROM messages ORDER BY id DESC LIMIT 1');
     $message = $stmt->fetch()['message'];
     if ($id == "(ADMIN) Producer") {
-     echo "<a href='edit_message.php'>Edytuj wiadomość</a>";
+     echo "<a class='admin-btn' href='edit_message.php'>Edytuj wiadomość</a>";
+     echo "</div>";
     }
     echo "<div id='message'>";
     echo "<div id='msg-title'>Wiadomości</div>";
     echo "<div id='msg-source'>$message</div>";
-    echo "</div>"
-
+    echo "</div>";
+    
 
     ?>
     <h1>Niedawno dodane utwory:</h1>
@@ -105,23 +105,6 @@ if(!isset($_SESSION['login'])){
         echo "<i class='arrow right'></i>";
         echo $utwor['title_music'];
         echo "</div>";
-    }
-    ?>
-        <h1>Osoby które niedawno do nas dołączyły:</h1>
-    <?php
-    $zapytanie4 = "SELECT * FROM users ORDER BY id_user DESC LIMIT 3;";
-    $wynik4 = mysqli_query($polaczenie,$zapytanie4);
-
-    while($user = mysqli_fetch_array($wynik4)) {
-        echo "<div id='niedawny_utwor'>";
-        echo "<i class='arrow right'></i>";
-        echo $user['login'];
-        echo "<br>";
-        echo "<div class='red'>";
-        echo $user['type'];
-        echo "</div>";
-        echo "</div>";
-        
     }
     ?>
     <br>
@@ -138,13 +121,8 @@ if(!isset($_SESSION['login'])){
         <div id="artist-box"><div class="text-a-b">LESTON</div></div>
     </div>
 </div>
-<?php
-        echo "webpage in work. Please wait :)";
-        //
-    ?>
+<div id="content">
 
-
-    <h1>nasza dostępna lista utworów.</h1>
     
 
     <?php
@@ -156,10 +134,10 @@ if(!isset($_SESSION['login'])){
         echo $wiersz['title_music'];
         echo "</a>";
         echo "<br>";
-        echo $wiersz['url_music'];
     echo "</div>";
     }
 ?>
+    </div>
 </div>
 <div id="footer">© 2023 created by ariqu <br>
     PHP SQL JS HTML CSS

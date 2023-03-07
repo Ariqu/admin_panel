@@ -96,15 +96,14 @@ while($row = mysqli_fetch_array($wynik2)) {
     echo "<div id='box_database'>";
     //echo $row['id'];
     echo "<br>";
-    echo "<div id='info'>";
+    echo "<div id='info' onclick='editTitleUrl(" . $row['id_music'] . ")'>";
     echo $row['url_music'];
     echo "</div>";
     echo "<br>";
-    echo "<div id='info'>";
+    echo "<div id='info' onclick='editTitleUrl(" . $row['id_music'] . ")'>";
     echo $row['title_music'];
     echo "</div>";
     echo "<br>";
-
 
     ?>
     
@@ -121,6 +120,8 @@ while($row = mysqli_fetch_array($wynik2)) {
         float: right;
         clear: both;
     }
+    
 </style>
+
 </body>
 </html>
