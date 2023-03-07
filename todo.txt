@@ -1,1 +1,0 @@
-1. ustawic algorytm ustawiajacy maksymalna liczbe "30" utwórów na stronie głównej.
