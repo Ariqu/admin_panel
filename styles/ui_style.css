@@ -13,7 +13,7 @@
   .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
-  }
+}
 body {
     
     background-color: rgb(43, 43, 43);
@@ -35,7 +35,6 @@ body {
     margin-right: 10px;
     border-bottom: 1px solid white;
     transition: 500ms;
-    
 }
 .username::first-letter {
     color: black;
@@ -45,7 +44,6 @@ body {
     opacity: 0.5;
     transition: 500ms;
 }
-
 .logout {
     float: right;
     color: white;
@@ -86,23 +84,8 @@ body {
     background: rgb(10,38,179);
     background: radial-gradient(circle, rgb(247, 72, 189) 0%, rgb(120, 17, 255) 100%);
 }
-
 #music_id:hover {
     opacity: 0.5;
-}
-a {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-    background-color: white;
-    width: 100%;
-    margin-top: 50px;
-    transition: 500ms;
-    border-radius: 30px;
-}
-a:hover {
-    background-color: cadetblue;
-    color: black;
 }
 #right_user_panel {
     float: right;
@@ -142,7 +125,6 @@ a:hover {
     font-size: 16px;
     border-radius: 5px;
 }
-
 #artist-box:nth-child(1n) {
     background-color:rgb(72, 247, 151);
 }
@@ -157,6 +139,9 @@ a:hover {
 }
 .text-a-b {
     margin-top: 29px;
+}
+a {
+    color: white;
 }
 #type {
     color: rgb(255, 197, 197);
@@ -200,11 +185,9 @@ a:hover {
 #container {
     min-height: 150vh;
   }
-   
   main {
     flex-grow: 1;
   }
-   
   #footer {
     margin-top: auto;
     width: 100%;
@@ -216,5 +199,4 @@ a:hover {
   .red {
     color: rgb(255, 88, 88);
     font-weight: 300;
-    
-  }
+}

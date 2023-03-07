@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/log_reg.css">
+    <link rel="icon" type="image/png" href="images/icon.png">
     <title>Rejestracja</title>
 </head>
 <body>
@@ -32,7 +33,7 @@ if (isset($_POST['submit'])) {
     $query = "INSERT INTO users (login, password, type, email) VALUES ('$login', '$password', '$type', '$email')";
     if (mysqli_query($main_connect, $query)) {
       // Użytkownik został dodany pomyślnie, wyświetl komunikat
-      echo "Użytkownik został pomyślnie zarejestrowany!";
+      echo "Użytkownik został pomyślnie zarejestrowany.";
       sleep(1);
       header('location: login_admin.php');
     } else {
@@ -42,35 +43,39 @@ if (isset($_POST['submit'])) {
   }
 }
 ?>
-    <div id="content">
+<div id="content">
     <div id="image">
         <img src="images/img_1.png" alt="">
     </div>
-<div id="user-form">
-<form method="post">
-  <label>Login:</label>
-  <input type="text" name="login" required>
-  <br>
-  <label>Hasło:</label>
-  <input type="password" name="password" required>
-  <br>
-  <label>Email:</label>
-  <input type="email" name="email" required>
-  <br>
-  <label>Rola:</label>
-  <br>
-  <select name="select_type" required>
-  <option value="Producer">Producer</option>
-  <option value="Listener">Listener</option>
-  <option value="DJ">DJ</option>
-  <option value="Sound engineer">Sound engineer</option>
-</select>
-  <input type="submit" name="submit" value="Zarejestruj">
-</form>
-<a href="login_admin.php"><button>Masz już konto? Zaloguj się</button></a>
+  <div id="user-form">
+    <form method="post">
+    <div id="content-user-form">
+      <p style="font-size: 26px;">PKP Rozkład bassu</p><br>
+      <p style="font-size: 26px;">Rejestracja</p><br>
+      <label>Login: </label>
+      <input type="text" name="login" required>
+      <br>
+      <label>Hasło: </label>
+      <input type="password" name="password" required>
+      <br>
+      <label>Email: </label>
+      <input type="email" name="email" required>
+      <br><br>
+      <label>Wybierz rolę: </label>
+      <select name="select_type" required style="width: 110px;">
+        <option value="Listener">Słuchacz</option>
+        <option value="Sound engineer">Klubowicz</option>
+        <option value="Producer">Producent</option>
+        <option value="DJ">DJ</option>
+      </select>
+      <br>
+      <br>
+      <a><input type="submit" name="submit" style="cursor: pointer;" value="Zarejestruj się"></a>
+    </form>
+    <br><br>
+    <p style="font-size: 12px;">Masz już konto?
+    <a href="login_admin.php" style="color: white;"><br>Zaloguj się...</a></p>
+  </div>
 </div>
-</div>
-</div>
-    
 </body>
 </html>
