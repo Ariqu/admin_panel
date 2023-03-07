@@ -21,6 +21,7 @@ if ($login != "ariqu" && $login != "caramel bass" ) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN INTERFACE</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <body>
 

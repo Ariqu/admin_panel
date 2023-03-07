@@ -18,6 +18,9 @@ body {
     width: 500px;
     margin: auto;
 }
+a {
+    color: white;
+}
 input {
     border: 2px solid black;
     background-color: white;
@@ -79,7 +82,6 @@ button.comeback {
     float: right;
     border-radius: 20px;
     transition: 500ms;
-
 }
 button {
     transition: 500ms;

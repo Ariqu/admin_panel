@@ -47,8 +47,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prototyp systemu logowania</title>
+    <title>Logowanie</title>
     <link rel="stylesheet" href="styles/log_reg.css">
+    <link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <body>
     <div id="content">
@@ -57,16 +58,20 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     </div>
 <div id="user-form">
     <div id="content-user-form">
-<form method="POST" action="login_admin.php">
-    <input type="text" name="username">
-    <input type="password" name="password">
-    <input type="submit" name="submit_login" value="zaloguj">
-</form>
-<a href="register.php"><button>Nie masz konta? Zarejetruj się</button></a>
+        <p style="font-size: 26px;">PKP Rozkład bassu</p><br>
+        <p style="font-size: 26px;">Logowanie</p><br>
+        <form method="POST" action="login_admin.php">
+            <label>Login: </label>
+            <input type="text" name="username"><br>
+            <label>Hasło: </label>
+            <input type="password" name="password"><br><br>
+            <input type="submit" name="submit_login" style="cursor: pointer;" value="Zaloguj się">
+        </form>
+        <br><br>
+        <p style="font-size: 12px;">Nie masz konta?<br>
+        <a href="register.php" style="color: white;">Zarejetruj się...</a></p>
     </div>
-    </div>
-    </div>
-
-
+</div>
+</div>
 </body>
 </html>
