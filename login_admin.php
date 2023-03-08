@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 <body>
     <div id="content">
     <div id="image">
-        <img src="images/img_1.png" alt="">
+        <img src="images/img_2.png" alt="">
     </div>
 <div id="user-form">
     <div id="content-user-form">

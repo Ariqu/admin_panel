@@ -88,7 +88,7 @@ body {
     opacity: 0.5;
 }
 #right_user_panel {
-    float: right;
+    float: left;
     width: 400px;
     min-height: 1270px;
     background-color: rgb(27, 26, 26);
