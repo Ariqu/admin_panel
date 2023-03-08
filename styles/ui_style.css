@@ -228,6 +228,33 @@ a {
 .icon:hover {
     opacity: 0.7
 }
+.animated {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes slide-out-left {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  }
+  
+  @keyframes slide-in-right {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
 .card-transition {
     transition: all 0.3s ease-in-out;
 }

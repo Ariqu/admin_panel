@@ -139,7 +139,7 @@ if(!isset($_SESSION['login'])){
         <div id="artist-box"><div class="text-a-b">LESTON</div></div>
     </div>
 </div>
-    <div id="main-content">
+    <div id="main-content" class="animated" >
 
 
 
