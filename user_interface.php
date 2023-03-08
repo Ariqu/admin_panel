@@ -81,7 +81,7 @@ if(!isset($_SESSION['login'])){
     ?>
     <div id="select">
         <div class="home">
-            <img class="icon" src="images/icons/home.png" alt="HOME">
+            <img onclick="location.reload()" class="icon" src="images/icons/home.png" alt="HOME">
         </div>
         <div class="biblioteka">
             <img onclick="library_change()" class="icon" src="images/icons/library.png" alt="BIBLIOTEKA">
