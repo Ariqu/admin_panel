@@ -36,7 +36,7 @@ if(!isset($_SESSION['login'])){
     <link rel="stylesheet" href="styles/ui_style.css">
     <link rel="icon" type="image/png" href="images/icon.png">
 </head>
-<body>
+<body onload="home()">
     <div id="container">
         <div id="panel">
             <div id="title_webpage">PKB</div>
@@ -81,7 +81,7 @@ if(!isset($_SESSION['login'])){
     ?>
     <div id="select">
         <div class="home">
-            <img onclick="location.reload()" class="icon" src="images/icons/home.png" alt="HOME">
+            <img onclick="home()" class="icon" src="images/icons/home.png" alt="HOME">
         </div>
         <div class="biblioteka">
             <img onclick="library_change()" class="icon" src="images/icons/library.png" alt="BIBLIOTEKA">
@@ -139,13 +139,6 @@ if(!isset($_SESSION['login'])){
         <div id="artist-box"><div class="text-a-b">LESTON</div></div>
     </div>
 </div>
-<?php
-        echo "webpage in work. Please wait :)";
-        //
-    ?>
-
-
-    <h1>nasza dostępna lista utworów.</h1>
     <div id="main-content">
 
 
