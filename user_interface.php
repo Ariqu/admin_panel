@@ -32,13 +32,14 @@ if(!isset($_SESSION['login'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500&family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="scripts/change.js"></script>
     <link rel="stylesheet" href="styles/ui_style.css">
     <link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <body>
     <div id="container">
         <div id="panel">
-            <div id="title_webpage">PKP Rozkład bassu</div>
+            <div id="title_webpage">PKB</div>
                 <div class="username"> <?php echo $_SESSION['login']; ?> </div><br /><br /><br />
                     <form method="post" action="logout.php">
                         <input class="logout" type="submit" value="Log out">

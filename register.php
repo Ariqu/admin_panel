@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 ?>
 <div id="content">
     <div id="image">
-        <img src="images/img_1.png" alt="">
+    <img src="images/img_2.png" alt="">
     </div>
   <div id="user-form">
     <form method="post">
