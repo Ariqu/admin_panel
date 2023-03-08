@@ -89,7 +89,7 @@ body {
 }
 #right_user_panel {
     float: left;
-    width: 400px;
+    width: 300px;
     min-height: 1270px;
     background-color: rgb(27, 26, 26);
 }
@@ -110,8 +110,8 @@ body {
     height: 100%;
 }
 #artist-box {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     float: left;
     margin: 5px;
     text-align: center;
@@ -150,19 +150,14 @@ a {
     text-align: center;
 }
 #title_webpage {
-    color:rgb(247, 72, 189);
+    color:rgb(255, 255, 255);
     font-size: 80px;
     float: left;
     width: 12%;
+    height: 120px;
 }
-#title_webpage::first-letter {
-    background-color: rgb(247, 72, 189);
-    color: black;
-}
-#title_webpage:first-of-type {
-    background-color: rgb(21, 0, 139);
-    color: black;
-}
+
+
 #message {
     background-color: rgb(114, 97, 175);
     color: black;
@@ -199,4 +194,16 @@ a {
   .red {
     color: rgb(255, 88, 88);
     font-weight: 300;
+}
+#select {
+    margin: 2px;
+
+}
+.icon {
+    width: 40px;
+    height: 40px;
+    transition: 200ms;
+}
+.icon:hover {
+    opacity: 0.7
 }
