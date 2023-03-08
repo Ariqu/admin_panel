@@ -139,13 +139,6 @@ if(!isset($_SESSION['login'])){
         <div id="artist-box"><div class="text-a-b">LESTON</div></div>
     </div>
 </div>
-<?php
-        echo "webpage in work. Please wait :)";
-        //
-    ?>
-
-
-    <h1>nasza dostępna lista utworów.</h1>
     
 
     <?php
