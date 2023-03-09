@@ -4,42 +4,10 @@ if (isset($_SESSION['logout_message'])) {
     echo $_SESSION['logout_message'];
     unset($_SESSION['logout_message']);
 }
+
 $polaczenie_login = mysqli_connect('localhost','root','','music_database');
-
-if($_SERVER["REQUEST_METHOD"]=="POST") {
-    //
-        // username and password sent from form 
-        
-        $myusername = mysqli_real_escape_string($polaczenie_login,$_POST['username']);
-        $mypassword = mysqli_real_escape_string($polaczenie_login,$_POST['password']); 
-        
-        $sql = "SELECT id_user FROM users WHERE login = '$myusername' and password = md5('$mypassword')";
-
-        $result = mysqli_query($polaczenie_login,$sql);
-
-        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-
-        
-        $count = mysqli_num_rows($result);
-        
-          
-        if($count == 1) {
-            echo "Trwa przekierowywanie...";
-            session_regenerate_id();
-            $_SESSION['login'] = $myusername;
-            sleep(2); 
-            header("location: user_interface.php");
-            exit();
-        } if ($mypassword == null || $myusername == null) {
-            echo "nie wpisałeś loginu lub hasła.";
-        }
-        
-        else {
-           echo "Twój login lub hasło jest nie poprawne.";
-        }
-     }
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,6 +38,41 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         <br><br>
         <p style="font-size: 12px;">Nie masz konta?<br>
         <a href="register.php" style="color: white;">Zarejetruj się...</a></p>
+        <?php
+if($_SERVER["REQUEST_METHOD"]=="POST") {
+    //
+        // username and password sent from form 
+        
+        $myusername = mysqli_real_escape_string($polaczenie_login,$_POST['username']);
+        $mypassword = mysqli_real_escape_string($polaczenie_login,$_POST['password']); 
+        
+        $sql = "SELECT id_user FROM users WHERE login = '$myusername' and password = md5('$mypassword')";
+
+        $result = mysqli_query($polaczenie_login,$sql);
+
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+        
+        $count = mysqli_num_rows($result);
+        
+          
+        if($count == 1) {
+            echo "Trwa przekierowywanie...";
+            session_regenerate_id();
+            $_SESSION['login'] = $myusername;
+            sleep(2); 
+            header("location: user_interface.php");
+            exit();
+        } if ($mypassword == null || $myusername == null) {
+            echo "<div id='error_user'>Nie wpisałeś loginu lub hasła.</div>";
+        }
+        
+        else {
+            echo "<div id='error_user'>Twój login lub hasło jest niepoprawne.</div>";
+        }
+     }
+
+?>
     </div>
 </div>
 </div>

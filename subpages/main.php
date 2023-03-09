@@ -10,12 +10,18 @@
     <div id="ad">
         <img src="images/banner.png" alt="">
     </div>
+    <div class="alert">Witamy na naszej platformie , uwaga nieraz są trzęsienia ziemi spowodowane mocnym bassem , prosimy zachować bezpieczeństwo. Życzymy udanej podróży</div><br> ~ Polskie Koleje Bassowe
     <style>
         img {
             border-radius: 10px;
         }
         #ad {
             text-align: center;
+        }
+        .alert {
+            color: red;
+            font-weight: 900;
+            font-size: 40px;
         }
     </style>
 </body>

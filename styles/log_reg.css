@@ -52,3 +52,10 @@ button:hover {
     text-align: center;
     text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white, 0 0 50px white, 0 0 60px white, 0 0 70px white;
 }
+#error_user {
+    color: red;
+    font-weight: 400;
+    margin: 5px;
+    border-bottom: 1px solid rgb(255, 105, 105);
+    text-shadow: 0 0 10px rgb(255, 99, 99), 0 0 20px rgb(255, 99, 99), 0 0 30px rgb(255, 99, 99), 0 0 40px rgb(255, 99, 99), 0 0 50px rgb(255, 99, 99), 0 0 60px rgb(255, 99, 99), 0 0 70px rgb(255, 99, 99);
+}

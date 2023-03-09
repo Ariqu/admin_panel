@@ -30,3 +30,14 @@ function home() {
       mainContent.classList.remove("card-transition"); // Usuń klasę z animacją po zakończeniu animacji
     });
 }
+
+function add_change() {
+  let mainContent = document.getElementById("main-content");
+  mainContent.classList.add("card-transition"); // Dodaj klasę z animacją
+  fetch("subpages/add.php")
+    .then(response => response.text())
+    .then(data => {
+      mainContent.innerHTML = data;
+      mainContent.classList.remove("card-transition"); // Usuń klasę z animacją po zakończeniu animacji
+    });
+}

@@ -9,40 +9,7 @@
     <title>Rejestracja</title>
 </head>
 <body>
-<?php
-// Połączenie z bazą danych
-$main_connect = mysqli_connect('localhost','root','','music_database');
 
-// Obsługa formularza rejestracyjnego
-if (isset($_POST['submit'])) {
-  // Pobierz wartości formularza
-  $login = mysqli_real_escape_string($main_connect, $_POST['login']);
-  $password = mysqli_real_escape_string($main_connect, $_POST['password']);
-  $type = mysqli_real_escape_string($main_connect, $_POST['select_type']);
-  $email = mysqli_real_escape_string($main_connect, $_POST['email']);
-
-  // Sprawdź, czy użytkownik o takim loginie już istnieje
-  $query = "SELECT * FROM users WHERE login='$login'";
-  $result = mysqli_query($main_connect, $query);
-  if (mysqli_num_rows($result) > 0) {
-    // Użytkownik już istnieje, wyświetl błąd
-    echo "Użytkownik o takim loginie już istnieje!";
-  } else {
-    // Dodaj użytkownika do bazy danych
-    $password = md5($password);
-    $query = "INSERT INTO users (login, password, type, email) VALUES ('$login', '$password', '$type', '$email')";
-    if (mysqli_query($main_connect, $query)) {
-      // Użytkownik został dodany pomyślnie, wyświetl komunikat
-      echo "Użytkownik został pomyślnie zarejestrowany.";
-      sleep(1);
-      header('location: login_admin.php');
-    } else {
-      // Wystąpił błąd podczas dodawania użytkownika, wyświetl komunikat
-      echo "Błąd: " . mysqli_error($main_connect);
-    }
-  }
-}
-?>
 <div id="content">
     <div id="image">
     <img src="images/img_2.png" alt="">
@@ -75,6 +42,41 @@ if (isset($_POST['submit'])) {
     <br><br>
     <p style="font-size: 12px;">Masz już konto?
     <a href="login_admin.php" style="color: white;"><br>Zaloguj się...</a></p>
+    <?php
+// Połączenie z bazą danych
+$main_connect = mysqli_connect('localhost','root','','music_database');
+
+// Obsługa formularza rejestracyjnego
+if (isset($_POST['submit'])) {
+  // Pobierz wartości formularza
+  $login = mysqli_real_escape_string($main_connect, $_POST['login']);
+  $password = mysqli_real_escape_string($main_connect, $_POST['password']);
+  $type = mysqli_real_escape_string($main_connect, $_POST['select_type']);
+  $email = mysqli_real_escape_string($main_connect, $_POST['email']);
+
+  // Sprawdź, czy użytkownik o takim loginie już istnieje
+  $query = "SELECT * FROM users WHERE login='$login'";
+  $result = mysqli_query($main_connect, $query);
+  if (mysqli_num_rows($result) > 0) {
+    // Użytkownik już istnieje, wyświetl błąd
+    echo "<div id='error_user'>Istnieje już takie konto.</div>";
+  } else {
+    // Dodaj użytkownika do bazy danych
+    $password = md5($password);
+    $query = "INSERT INTO users (login, password, type, email) VALUES ('$login', '$password', '$type', '$email')";
+    if (mysqli_query($main_connect, $query)) {
+      // Użytkownik został dodany pomyślnie, wyświetl komunikat
+      echo "Użytkownik został pomyślnie zarejestrowany.";
+      sleep(1);
+      header('location: login_admin.php');
+    } else {
+      // Wystąpił błąd podczas dodawania użytkownika, wyświetl komunikat
+      echo "Błąd: " . mysqli_error($main_connect);
+    }
+  }
+}
+?>
+    
   </div>
 </div>
 </body>
