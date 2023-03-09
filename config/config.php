@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 $polaczenie44 = mysqli_connect("localhost", "root", "", "music_database");
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -19,6 +17,4 @@ if ($result44 && mysqli_num_rows($result44) > 0) {
 mysqli_close($polaczenie44);
 
 
-
-echo "strona w pracy";
 ?>
