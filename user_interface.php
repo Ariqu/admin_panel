@@ -1,6 +1,7 @@
 <?php
 session_start();
 $_SESSION['login'];
+$login = $_SESSION['login'];
 $polaczenie = mysqli_connect('localhost','root','','music_database');
 $a = "SELECT id_music, url_music, title_music FROM music";
 $b = mysqli_query($polaczenie,$a);
@@ -90,6 +91,10 @@ if(!isset($_SESSION['login'])){
         <div class="kategoria">
             <img onclick="category_change()" class="icon" src="images/icons/category.png" alt="KATEGORIA">
         </div>
+
+        <div class="add_song">
+            <img onclick="add_change()" class="icon" src="images/icons/add.png" alt="DODAJ UTWÓR">
+        </div>
     </div>
     <!---
     <?php
@@ -137,8 +142,38 @@ if(!isset($_SESSION['login'])){
         <div id="artist-box"><div class="text-a-b">LYCOS</div></div>
         <div id="artist-box"><div class="text-a-b">DAVID TANGO</div></div>
         <div id="artist-box"><div class="text-a-b">LESTON</div></div>
+        <?php
+
+$polaczenie44 = mysqli_connect("localhost", "root", "", "music_database");
+
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+
+$login = $_SESSION['login'];
+
+
+$query44 = "SELECT id_user FROM users WHERE login = '$login'";
+$result44 = mysqli_query($polaczenie44, $query44);
+
+
+if ($result44 && mysqli_num_rows($result44) > 0) {
+    $row44 = mysqli_fetch_assoc($result44);
+    // id potrzebne do wrzucania nutek!!!
+    $id_user = $row44['id_user'];
+} else {
+    header('location: login_admin.php');
+}
+
+mysqli_close($polaczenie44);
+
+
+?>
     </div>
 </div>
+
     <div id="main-content" class="animated" >
 
 
