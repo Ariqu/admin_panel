@@ -37,7 +37,9 @@ function add_change() {
   fetch("subpages/add.php")
     .then(response => response.text())
     .then(data => {
+      console.log(data); // wyświetl zawartość odpowiedzi
       mainContent.innerHTML = data;
       mainContent.classList.remove("card-transition"); // Usuń klasę z animacją po zakończeniu animacji
     });
 }
+

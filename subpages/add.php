@@ -13,12 +13,45 @@ if ($result44 && mysqli_num_rows($result44) > 0) {
     // id potrzebne do wrzucania nutek!!!
     $id_user = $row44['id_user'];
 } else {
-    header('location: login_admin.php');
+    header('location: user_interface.php');
 }
 
-mysqli_close($polaczenie44);
 
 
 
-echo "strona w pracy";
+echo "witaj: " . $_SESSION['login'];
+
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPLOAD SONG - PKB</title>
+    <script src="scripts/change.js"></script>
+</head>
+<body>
+
+DODAJ SWÓJ UTWÓR
+<form method="POST" action="add.php">
+    <input name="url_user_pkb" type="text">
+    <input name="title_user_pkb" type="text">
+    <input name="wrzuc" onsubmit="add_change(event)" type="submit">
+</form>
+
+<?php
+if(isset($_POST['wrzuc'])) {
+$url_user = $_POST['url_user_pkb'];
+$title_user = $_POST['title_user_pkb'];
+
+$wrzuc = "INSERT INTO music (url_music, title_music, id_user) VALUES('$url_user','$title_user','$id_user')";
+$wynik_wrzucenia = mysqli_query($polaczenie44, $wrzuc);
+mysqli_close($polaczenie44);
+} else {
+    echo "wrzuć coś śmiało!";
+}
+
+?>
+</body>
+</html>
