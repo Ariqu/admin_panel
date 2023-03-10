@@ -10,6 +10,7 @@
             echo "<div id='author'>";
             echo strstr($wiersz['title_music'], '-', true);
             echo "</div>";
+            echo strstr($wiersz['title_music'], '-', false);
             echo "</a>";
             echo "<br>";
             echo $wiersz['url_music'];

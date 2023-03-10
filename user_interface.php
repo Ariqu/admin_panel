@@ -34,13 +34,14 @@ if(!isset($_SESSION['login'])){
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500&family=Ubuntu&display=swap" rel="stylesheet">
     <script src="scripts/change.js"></script>
+    <script src="scripts/window.js"></script>
     <link rel="stylesheet" href="styles/ui_style.css">
     <link rel="icon" type="image/png" href="images/icon.png">
 </head>
 <body onload="home()">
     <div id="container">
         <div id="panel">
-            <div id="title_webpage">PKB</div>
+            <div id="title_webpage">PKBass</div>
                 <div class="username"> <?php echo $_SESSION['login']; ?> </div><br /><br /><br />
                     <form method="post" action="logout.php">
                         <input class="logout" type="submit" value="Log out">
@@ -93,9 +94,13 @@ if(!isset($_SESSION['login'])){
         </div>
 
         <div class="add_song">
-            <a href="subpages/add.php"> <img class="icon" src="images/icons/add.png" alt="DODAJ UTWÓR"> </a>
+        <img onclick="openModal()" class="icon" src="images/icons/add.png" alt="DODAJ UTWÓR"> </a>
         </div>
     </div>
+
+
+
+
     <!---
     <?php
     
@@ -176,8 +181,112 @@ mysqli_close($polaczenie44);
     <div id="title-main-content">
         <div id='output'></div>
     </div>
-    <div id="main-content" class="animated" >
 
+<!-- Przycisk otwierający modal -->
+
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p class="text">
+    <?php
+
+$polaczenie44 = mysqli_connect("localhost", "root", "", "music_database");
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$login = $_SESSION['login'];
+$query44 = "SELECT id_user FROM users WHERE login = '$login'";
+$result44 = mysqli_query($polaczenie44, $query44);
+if ($result44 && mysqli_num_rows($result44) > 0) {
+    $row44 = mysqli_fetch_assoc($result44);
+    // id potrzebne do wrzucania nutek!!!
+    $id_user = $row44['id_user'];
+} else {
+    header('location: user_interface.php');
+}
+
+
+
+
+echo "witaj: " . $_SESSION['login'];
+
+
+
+?>
+DODAJ SWÓJ UTWÓR
+
+<form method="POST" action="user_interface.php">
+    <input name="url_user_pkb" type="text">
+    <input name="title_user_pkb" type="text">
+    <input name="wrzuc" type="submit">
+</form>
+
+<?php
+if(isset($_POST['wrzuc'])) {
+$url_user = $_POST['url_user_pkb'];
+$title_user = $_POST['title_user_pkb'];
+
+$wrzuc = "INSERT INTO music (url_music, title_music, id_user) VALUES('$url_user','$title_user','$id_user')";
+$wynik_wrzucenia = mysqli_query($polaczenie44, $wrzuc);
+mysqli_close($polaczenie44);
+header('location: user_interface.php');
+} else {
+    echo "wrzuć coś śmiało!";
+}
+
+?>
+    </p>
+  </div>
+</div>
+
+<!-- Styl dla modalu -->
+<style>
+    .text {
+        color: black;
+    }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+</style>
+
+
+
+
+    <div id="main-content" class="animated" >
+        
     </div>
     
 </div>

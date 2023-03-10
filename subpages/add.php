@@ -34,6 +34,13 @@ echo "witaj: " . $_SESSION['login'];
 <body>
 
 DODAJ SWÓJ UTWÓR
+<br>
+<h1>Wymagane formaty:<h1>
+    <br>
+<h3>1. Autor - Tytuł </h3>
+<h3>2. Autorzy ... - Tytuł </h3>
+<h3>3. Autor lub Autorzy... - Tytuł (...) </h3>
+<br>
 <form method="POST" action="add.php">
     <input name="url_user_pkb" type="text">
     <input name="title_user_pkb" type="text">
